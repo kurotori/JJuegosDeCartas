@@ -11,7 +11,7 @@ public class EjercicioFinal2017 {
         String[] apellido = new String[10];
         ________[] _____ = new __________[10];
 
-        while (!opcion.equals(_______)) {
+        ______ (!opcion.equals(_______)) {
             //NOTA: un "!" delante de una condición significa negación del
             //valor de la misma.    
             
