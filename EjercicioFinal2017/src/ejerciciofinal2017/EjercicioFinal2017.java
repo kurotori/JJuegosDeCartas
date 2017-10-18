@@ -8,7 +8,7 @@ public class EjercicioFinal2017 {
         Scanner teclado = new Scanner(System.______);
         ________ opcion = "";
         String[] nombre = new ______[10];
-        String[] apellido = new String[10];
+        String[] apellido = new String[___];
         ________[] _____ = new __________[10];
 
         ______ (!opcion.equals(_______)) {
