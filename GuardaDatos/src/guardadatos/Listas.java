@@ -2,6 +2,7 @@
 package guardadatos;
 
 public class Listas {
+    
     /**
      * Recibe un dato y lo guarda en la lista indicada, si no hay espacio en la lista
      * el método la reemplaza por una lista con longitud mayor.
@@ -149,6 +150,39 @@ public class Listas {
         return nueva;
     }
     
+    /**
+     * Permite obtener un String con los datos de una lista, numerando cada entrada,
+     * para mostrarlo en un JPanel u otro objeto semejante que requiera un String
+     * para modificar el texto que muestra.
+     * @param lista La lista que contiene los datos que quieren mostrarse.
+     * @return Un String formado por los datos de cada posición en la lista.
+     */
+    public String MostrarLista(String[] lista){
+        //Creamos el String que contendrá el resultado
+        String resultado="";
+        //Averiguamos la longitud de la lista con el atributo 'length'
+        int longitud = lista.length;
+        //Creamos un 'for' que recorra la lista...
+        for(int posicion=0;posicion<longitud;posicion++){
+            //... añadiendo los datos de cada posición de la lista al String,
+            //intercalando '\n' entre cada dato, para asegurarnos que haya un
+            //salto de renglón entre dato y dato.
+            resultado = resultado +"\n"+(posicion+1)+")"+lista[posicion];
+        }
+        //Entregamos el String con todos los datos.
+        return resultado;
+    }
+    
+    
+    
+    
+    
+    /**
+     * 
+     * @param posicion
+     * @param datoNuevo
+     * @param lista 
+     */
     public void ModificarDato(int posicion, String datoNuevo, String[] lista){
         
     }
