@@ -59,10 +59,14 @@ public class Archivo {
                 datos=datos+lector.nextLine()+"\n";
             }
  
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
+        } catch (IOException excepcion) {
+            System.err.println(excepcion.getMessage());
+            datos="ATENCIÓN: Error al leer el archivo";
         }
-        
+        catch (NullPointerException excepcion) {
+            System.err.println(excepcion.getMessage());
+            datos="ATENCIÓN: No se eligió ningùn archivo";
+        }
         return datos;
     }
     
