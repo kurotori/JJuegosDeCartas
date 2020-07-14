@@ -11,12 +11,31 @@ package juegodecartas.baraja;
  */
 public class Carta {
     
-    public int numero = 0;
-    public String palo = "";
+    private int numero = 0;
+    private String palo = "";
     
     //Método Constructor
     public Carta(int numero,String palo){
         this.numero = numero;
         this.palo = palo;
     }
+
+    /**
+     * Devuelve el número de la carta
+     * @return el número de la carta
+     */
+    public int getNumero() {
+        return numero;
+    }
+
+    /**
+     * Devuelve el palo de la carta
+     * @return el palo de la carta
+     */
+    public String getPalo() {
+        return palo;
+    }
+    
+    
+    
 }
