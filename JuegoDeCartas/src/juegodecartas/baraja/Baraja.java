@@ -5,6 +5,8 @@
  */
 package juegodecartas.baraja;
 
+import juegodecartas.herramientas.Azar;
+
 /**
  *
  * @author luiss
@@ -12,6 +14,8 @@ package juegodecartas.baraja;
 public class Baraja {
     public Carta[] cartas = new Carta[50];
     private String[] palos = {"Oro","Espada","Copa","Basto"};
+    
+    private Azar utilesAzar = new Azar();
     
     public Baraja(){
         int idCarta = 0; //Sirve para mostrar la posicion en la
@@ -33,7 +37,37 @@ public class Baraja {
                 this.cartas[idCarta] = nuevaCarta;
                 idCarta++;
             }
+        }
+    }
+    
+    
+    public void MostrarBaraja(){
+        
+        System.out.println("Cartas de la baraja:");
+        System.out.println("--------------------");
+        
+        for(int idCarta = 0; idCarta<50; idCarta++){
             
+            int numero = this.cartas[idCarta].getNumero();
+            String palo = this.cartas[idCarta].getPalo();
+            
+            System.out.println(numero + " de " + palo);
+        }
+        
+        System.out.println("--------------------");
+    }
+    
+    
+    public void Barajar(){
+        for(int idCarta = 0; idCarta<50; idCarta++){
+            
+            int posicion = utilesAzar.NumeroAlAzar(50);
+            
+            Carta carta1 = this.cartas[idCarta];
+            Carta carta2 = this.cartas[posicion];
+            
+            this.cartas[idCarta] = carta2;
+            this.cartas[posicion] = carta1;
         }
     }
 }
