@@ -58,16 +58,5 @@ public class Baraja {
     }
     
     
-    public void Barajar(){
-        for(int idCarta = 0; idCarta<50; idCarta++){
-            
-            int posicion = utilesAzar.NumeroAlAzar(50);
-            
-            Carta carta1 = this.cartas[idCarta];
-            Carta carta2 = this.cartas[posicion];
-            
-            this.cartas[idCarta] = carta2;
-            this.cartas[posicion] = carta1;
-        }
-    }
+    
 }

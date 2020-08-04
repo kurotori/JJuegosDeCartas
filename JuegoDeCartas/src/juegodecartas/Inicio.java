@@ -5,14 +5,11 @@
  */
 package juegodecartas;
 
-import juegodecartas.baraja.Baraja;
-import juegodecartas.baraja.Carta;
-
 /**
  *
  * @author luiss
  */
-public class JuegoDeCartas {
+public class Inicio {
 
     /**
      * @param args the command line arguments
@@ -20,11 +17,6 @@ public class JuegoDeCartas {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Baraja b =  new Baraja();
-        Jugador j = new Jugador("Fulano");
-        
-        j.Barajar(b);
-        b.MostrarBaraja();
     }
     
 }
