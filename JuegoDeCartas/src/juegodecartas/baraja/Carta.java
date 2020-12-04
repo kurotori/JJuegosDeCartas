@@ -36,6 +36,10 @@ public class Carta {
         return palo;
     }
     
+    public String RutaImagen(){
+        String ruta = "imagen/baraja/"+palo+numero+".png";
+        return ruta;
+    }
     
     
 }

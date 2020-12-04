@@ -7,7 +7,7 @@ package herencia;
 
 /**
  *
- * @author Sebastian
+ * @author luiss
  */
 public class Herencia {
 
@@ -16,10 +16,9 @@ public class Herencia {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Ventanita v1 = new Ventanita();
-        v1.setVisible(true);
-        
-        Ventana v2 = new Ventanita();
+        Heredera h1 = new Heredera();
+        h1.setVisible(true);
+        h1.CambiarTamanio(250, 700);
     }
     
 }
