@@ -18,6 +18,7 @@ public class Jugador {
     
     private String nombre="";
     private int ID = 0;
+    private boolean esMano = false;
     public ArrayList<Carta> mano = new ArrayList<>();
     private ArrayList<JuegoDeCartas> juegos = new ArrayList<JuegoDeCartas>();
 
@@ -95,9 +96,31 @@ public class Jugador {
         AgregarCartaAMano(carta);
     }
     
-   public void TirarCarta(Carta carta, ArrayList<Carta> mazo){
-       
+    /**
+     * Añade la carta que el jugador seleccionó para descarte y la
+     * añade al comienzo (pos 0) del mazo.
+     * @param carta La carta seleccionada para su descarte.
+     * @param mazo El mazo de cartas de descarte.
+     */
+    public void TirarCarta(Carta carta, ArrayList<Carta> mazo){
+       //Se añade la carta a la posición 0 del mazo.
        mazo.add(0,carta);
+       //Se remueve la carta de la mano del jugador.
        mano.remove(carta);
    }
+
+    /**
+     * @return el valor de esMano, si el jugador es mano, es true.
+     */
+    public boolean checkEsMano() {
+        return esMano;
+    }
+
+    /**
+     * Establece el jugador como el mano de la partida.
+     * @param esMano the esMano to set
+     */
+    public void setEsMano(boolean esMano) {
+        this.esMano = esMano;
+    }
 }

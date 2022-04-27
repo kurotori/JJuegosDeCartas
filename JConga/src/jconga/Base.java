@@ -18,16 +18,19 @@ import javax.swing.border.LineBorder;
  * @author luiss
  */
 public class Base extends javax.swing.JFrame {
-
+    
+    //Creamos un objeto para la baraja y uno para el mazo
     Baraja baraja = new Baraja();
     ArrayList<Carta> mazo = new ArrayList<>();
     
-    
+    //Creamos objetos para la mano del jugador y para su botonera
     ArrayList<Carta> mano = new ArrayList<>();
     ButtonCarta[] botonesMano = new ButtonCarta[8];
     
+    //Creamos un objeto para guardar los jugadores participantes
     ArrayList<Jugador> jugadores = new ArrayList<>();
     
+    //Variables auxiliares para el seguimiento de las acciones del juego
     int cartasSeleccionadas = 0;
     int cartasEnMano = 0;
     
@@ -41,12 +44,16 @@ public class Base extends javax.swing.JFrame {
         
     }
     
+    /**
+     * Prepara la ventana para el juego.
+     */
     private void PrepararVentana(){
+        //Creamos un objeto Carta para representar la baraja
         Carta imgBaraja = new Carta(0, "reves");
         btnBaraja.setCarta(imgBaraja);
         btnBaraja.ActualizarImagen();
         
-        
+        //Creamos y asignamos botones a la botonera del usuario
         botonesMano[0] = btnCarta1;
         botonesMano[1] = btnCarta2;
         botonesMano[2] = btnCarta3;
@@ -56,31 +63,41 @@ public class Base extends javax.swing.JFrame {
         botonesMano[6] = btnCarta7;
         botonesMano[7] = btnCarta8;
         
-        
-        
+        //PARA PRUEBAS: creamos una partida con dos jugadores        
         Jugador j1 = new Jugador();
         Jugador j2 = new Jugador();
         
         jugadores.add(j1);
         jugadores.add(j2);
         
+        //El 'primer jugador' es 'mano': baraja y reparte las cartas
+        //Esto debe mejorarse al pasar a un juego en red.
         jugadores.get(0).Barajar(baraja);
         jugadores.get(0).Repartir(jugadores, baraja);
         
+        //Se actualiza la cantidad de cartas en la baraja, en la mano
+        // y se activa la botonera.
         ActualizarCantBaraja();
         ActualizarMano();
         ActivarBotones();
     }
     
-    
+    /**
+     * Permite actualizar la cantidad de cartas en la baraja.
+     */
     private void ActualizarCantBaraja(){
+        //Se obtienen la catidad de cartas en la baraja y en el mazo
         int cantidadB = baraja.cartas.size();
         int cantidadM = mazo.size();
         
+        //Visualización de cantidades en la GUI
         lblCartasBaraja.setText(cantidadB+"");
         lblCartasMazo.setText(cantidadM+"");
         
+        //Se crea una carta nula
         Carta carta = null;
+        
+        //Si el mazo no esta vacío, se toma la primer carta
         if(cantidadM > 0){
             carta = mazo.get(0);
             
