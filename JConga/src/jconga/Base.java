@@ -350,6 +350,7 @@ public class Base extends javax.swing.JFrame {
     private void btnTirarCartaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTirarCartaMouseClicked
         // TODO add your handling code here:
         Carta cartaSel = null;
+        
         for (ButtonCarta btn: botonesMano) {
             if (btn.seleccionada) {
                 cartaSel = btn.getCarta();
@@ -404,15 +405,18 @@ public class Base extends javax.swing.JFrame {
     }
     
     private void CartaSeleccionada(java.awt.event.MouseEvent evt){
+        //Se ubica la carta clickeada
         ButtonCarta btn = (ButtonCarta)evt.getSource();
-        System.out.println(btn.getName()+":"+btn.seleccionada);
-        if (!btn.seleccionada) {
-            btn.seleccionada = true;
-            cartasSeleccionadas++;
-        }
-        else{ 
+        
+        System.out.println(btn.getCarta().getNumero()+btn.getCarta().getPalo()+":"+btn.seleccionada);
+        
+        if (btn.seleccionada) {
             btn.seleccionada = false;
             cartasSeleccionadas--;
+        }
+        else{ 
+            btn.seleccionada = true;
+            cartasSeleccionadas++;
         }
         
         btn.Mover();

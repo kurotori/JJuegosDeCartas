@@ -67,14 +67,17 @@ public class ButtonCarta extends JButton{
         this.setBorder(borde);
     }
     
+    //
     public void Mover(){
         Rectangle posBtn = this.getBounds();
         Rectangle posBtn2;
         if (seleccionada) {
-            posBtn2 = new Rectangle(posBtn.x, (posBtn.y)-20, posBtn.width, posBtn.height);
+            posBtn2 = new Rectangle(posBtn.x, (posBtn.y)+20, posBtn.width, posBtn.height);
+            //seleccionada = false;
         }
         else{
-            posBtn2 = new Rectangle(posBtn.x, (posBtn.y)+20, posBtn.width, posBtn.height);
+            posBtn2 = new Rectangle(posBtn.x, (posBtn.y)-20, posBtn.width, posBtn.height);
+            //seleccionada = true;
         }
         this.setBounds(posBtn2);
     }

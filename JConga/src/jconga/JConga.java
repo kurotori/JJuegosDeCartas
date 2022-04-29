@@ -5,6 +5,8 @@
  */
 package jconga;
 
+import herramientas.Archivo;
+
 /**
  *
  * @author luiss
@@ -16,6 +18,9 @@ public class JConga {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        herramientas.Archivo archivo = new Archivo();
+        String crearArchivoConf = archivo.CrearArchivo("./", "configuracion.json");
+        System.out.println(crearArchivoConf);
         Base b = new Base();
         b.setVisible(true);
     }

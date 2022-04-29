@@ -8,6 +8,8 @@ package jconga;
 
 import baraja.Carta;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
@@ -17,22 +19,33 @@ import org.netbeans.lib.awtextra.AbsoluteConstraints;
  */
 public class ArmarJuego extends javax.swing.JDialog {
 
+    // Botones para mostrar las cartas del juego
     private ArrayList<ButtonCarta> botonesJuego = new ArrayList<>();
+    //Objeto auxiliar para la carta seleccionada
+    ButtonCarta cartaSel;
     
-    /** Creates new form ArmarJuego */
+    /** Creates new form ArmarJuego: NO USAR */
     public ArmarJuego(java.awt.Frame parent, boolean modal ) {
         super(parent, modal);
         initComponents();
         
     }
     
+    /**
+     * Inicializa la ventana para organizar el 'juego' del jugador
+     * @param parent Ventana base del juego. Requerida para usar la ventana como modal
+     * @param modal Debe ser true
+     * @param cartas ArrayList con las cartas que forman el juego.
+     */
     public ArmarJuego(java.awt.Frame parent, boolean modal, ArrayList<Carta> cartas){
         super(parent, modal);
         initComponents();
         
+        //Parámetros de posicionamiento
         int posX = 10;
         int posY = 10;
         
+        //Creación y ubicación de las cartas en la ventana
         for(Carta carta:cartas){
             ButtonCarta btn = new ButtonCarta();
             
@@ -47,6 +60,18 @@ public class ArmarJuego extends javax.swing.JDialog {
             btn.setCarta(carta);
             btn.ActualizarImagen();
             
+            btn.addActionListener(
+                    new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                            btn.seleccionada = true;
+                            btn.Mover();
+                            }
+                        }
+            );
+            
+            botonesJuego.add(btn);
         }
     }
 
@@ -60,22 +85,26 @@ public class ArmarJuego extends javax.swing.JDialog {
     private void initComponents() {
 
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btnMovIzq = new javax.swing.JButton();
+        btnMovDer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(400, 330));
+        setResizable(false);
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jconga/imagen/juegoOk.png"))); // NOI18N
         jButton5.setPreferredSize(new java.awt.Dimension(106, 23));
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 255));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jconga/imagen/cartaIzquierda.png"))); // NOI18N
-        jButton6.setPreferredSize(new java.awt.Dimension(106, 23));
+        btnMovIzq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jconga/imagen/cartaIzquierda.png"))); // NOI18N
+        btnMovIzq.setPreferredSize(new java.awt.Dimension(106, 23));
 
-        jButton7.setBackground(new java.awt.Color(255, 255, 255));
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jconga/imagen/cartaDerecha.png"))); // NOI18N
-        jButton7.setPreferredSize(new java.awt.Dimension(106, 23));
+        btnMovDer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jconga/imagen/cartaDerecha.png"))); // NOI18N
+        btnMovDer.setPreferredSize(new java.awt.Dimension(106, 23));
+        btnMovDer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMovDerMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,26 +112,31 @@ public class ArmarJuego extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMovIzq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMovDer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(240, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMovIzq, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnMovDer, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMovDerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMovDerMouseClicked
+
+        
+    }//GEN-LAST:event_btnMovDerMouseClicked
 
     /**
      * @param args the command line arguments
@@ -147,9 +181,9 @@ public class ArmarJuego extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMovDer;
+    private javax.swing.JButton btnMovIzq;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     // End of variables declaration//GEN-END:variables
 
 }
