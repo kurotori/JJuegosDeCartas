@@ -49,6 +49,21 @@ public class Archivo {
         return resultado;
     }
     
-    public String LeerArchivo()
+    /**
+     * Permite leer el contenido de un archivo y pasarlo a una
+     * variable de tipo String.
+     * @param archivo La ruta completa hacia el archivo a leer.
+     * @return El contenido del archivo.
+     */
+    public String LeerArchivo(Path archivo){
+        String resultado = "";
+        try {
+            resultado = Files.readString(archivo);
+        } catch (IOException error) {
+            resultado = "ERROR: " + error.getMessage();
+        }
+        return resultado;
+    }
     
+    public void 
 }

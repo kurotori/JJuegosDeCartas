@@ -8,10 +8,17 @@ package herramientas;
  *
  * @author luiss
  */
+import java.nio.file.Path;
 import org.json.*;
 
 
 
 public class Json {
+    
+    Archivo archivo = new Archivo();
+    
+    public void GuardarDato(Path archivo){
+        
+    }
     
 }
