@@ -38,12 +38,13 @@ public class Archivo {
                 
             }
             else{
-                resultado = "Archivo " + archivo.getName() + " ya existe";
+                System.out.println("Archivo " +archivo.getCanonicalPath()+" " + archivo.getName() + " ya existe");
+                resultado = archivo.getCanonicalPath();
             }
             
         }
         catch(IOException error){
-            resultado = error.getMessage();
+            resultado = "ERROR CrearArchivo: "+ error.getMessage();
         }
 
         return resultado;
@@ -60,10 +61,11 @@ public class Archivo {
         try {
             resultado = Files.readString(archivo);
         } catch (IOException error) {
-            resultado = "ERROR: " + error.getMessage();
+            resultado = "ERROR LeerArchivo: " + error.getMessage() + 
+                    error.toString();
         }
         return resultado;
     }
     
-    public void 
+    //public void 
 }

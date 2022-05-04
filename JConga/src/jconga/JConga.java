@@ -6,6 +6,10 @@
 package jconga;
 
 import herramientas.Archivo;
+import herramientas.Json;
+import java.io.File;
+import java.nio.file.Path;
+import org.json.JSONObject;
 
 /**
  *
@@ -19,10 +23,26 @@ public class JConga {
     public static void main(String[] args) {
         // TODO code application logic here
         herramientas.Archivo archivo = new Archivo();
+        herramientas.Json json = new Json();
+        
+        
+        
         String crearArchivoConf = archivo.CrearArchivo("./", "configuracion.json");
-        System.out.println(crearArchivoConf);
-        Base b = new Base();
-        b.setVisible(true);
+        Path archConfig = Path.of(crearArchivoConf);
+        //System.out.println(archivo.LeerArchivo(archConfig));
+        JSONObject configuracion = json.LeerJson(archConfig);
+        
+        
+        //System.out.println(crearArchivoConf);
+        
+        
+        for (String clave : configuracion.keySet()) {
+            System.out.print(clave + ":");
+            System.out.println(configuracion.get(clave));
+        }
+        
+        //Base b = new Base();
+        //b.setVisible(true);
     }
     
 }

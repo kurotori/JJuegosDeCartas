@@ -17,8 +17,12 @@ public class Json {
     
     Archivo archivo = new Archivo();
     
-    public void GuardarDato(Path archivo){
-        
+    public JSONObject LeerJson(Path archivoJson){
+        String datosJson = archivo.LeerArchivo(archivoJson);
+        JSONObject resultado = new JSONObject(datosJson);
+        return resultado;
     }
+    
+    
     
 }
