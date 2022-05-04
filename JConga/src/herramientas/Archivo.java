@@ -67,5 +67,12 @@ public class Archivo {
         return resultado;
     }
     
-    //public void 
+    /**
+     * 
+     * @param archivo 
+     */
+    /*public void StringAArchivo(Path archivo){
+        File arch = new File(archivo);
+        
+    }*/
 }

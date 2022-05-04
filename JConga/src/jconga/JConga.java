@@ -32,7 +32,7 @@ public class JConga {
         //System.out.println(archivo.LeerArchivo(archConfig));
         JSONObject configuracion = json.LeerJson(archConfig);
         
-        
+        System.out.println(configuracion.toString());
         //System.out.println(crearArchivoConf);
         
         
@@ -41,8 +41,8 @@ public class JConga {
             System.out.println(configuracion.get(clave));
         }
         
-        //Base b = new Base();
-        //b.setVisible(true);
+        Base b = new Base();
+        b.setVisible(true);
     }
     
 }
