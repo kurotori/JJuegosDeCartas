@@ -15,6 +15,7 @@ import javax.imageio.*;
 import javax.swing.ImageIcon;
 import javax.swing.border.LineBorder;
 
+
 /**
  *
  * @author luiss
@@ -53,6 +54,36 @@ public class ButtonCarta extends JButton{
         catch(IOException ex){
             System.out.println("ERROR: "+ex.getMessage());
         }
+        
+    }
+    
+    public void AgregarMarcaJuego(int numJuego){
+        
+        if (numJuego==1 || numJuego==2) {
+            String rutaMarca = "imagen/marcaJuego"+numJuego+".png";
+            
+            try {
+                Icon imgActual = this.getIcon();
+                Image iconoImg =  ImageIO.read(getClass().getResource(rutaMarca));
+                iconoImg = iconoImg.getScaledInstance(10, 10, Image.SCALE_SMOOTH);
+                ImageIcon icono = new ImageIcon(iconoImg);
+                
+                CompoundIcon ci = new CompoundIcon(CompoundIcon.Axis.Z_AXIS, 0, CompoundIcon.RIGHT, CompoundIcon.BOTTOM,icono,imgActual);
+                
+            } catch (IOException e) {
+            }
+            
+        } else {
+            System.err.println("ERROR AgregarMarcaJuego: Valor no válido, solo se admiten 1 y 2 para numJuego ");
+        }
+        
+        
+        
+        
+        
+        
+        
+        
         
     }
     
