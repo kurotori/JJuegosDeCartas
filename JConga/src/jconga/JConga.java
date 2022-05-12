@@ -5,13 +5,8 @@
  */
 package jconga;
 
-import herramientas.Archivo;
 import herramientas.Configuracion;
-import herramientas.Json;
-import java.io.File;
-import java.net.URI;
-import java.nio.file.Path;
-import org.json.JSONObject;
+
 
 /**
  *
@@ -31,10 +26,10 @@ public class JConga {
         configuracion.ChequeoInicial();
         
         
-        /*
+        
         Base b = new Base();
         b.setVisible(true);
-       */
+       
     }
     
 }
