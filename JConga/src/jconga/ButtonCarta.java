@@ -68,7 +68,13 @@ public class ButtonCarta extends JButton{
                 iconoImg = iconoImg.getScaledInstance(10, 10, Image.SCALE_SMOOTH);
                 ImageIcon icono = new ImageIcon(iconoImg);
                 
-                CompoundIcon ci = new CompoundIcon(CompoundIcon.Axis.Z_AXIS, 0, CompoundIcon.RIGHT, CompoundIcon.BOTTOM,icono,imgActual);
+                CompoundIcon ci = new CompoundIcon(
+                            CompoundIcon.Axis.Z_AXIS, 
+                            0, 
+                            CompoundIcon.RIGHT, 
+                            CompoundIcon.BOTTOM,
+                            icono,imgActual);
+                this.setIcon(ci);
                 
             } catch (IOException e) {
             }
