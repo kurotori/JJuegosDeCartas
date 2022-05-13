@@ -63,7 +63,8 @@ public class ButtonCarta extends JButton{
             String rutaMarca = "imagen/marcaJuego"+numJuego+".png";
             
             try {
-                Icon imgActual = this.getIcon();
+                javax.swing.Icon imgActual = this.getIcon();
+                
                 Image iconoImg =  ImageIO.read(getClass().getResource(rutaMarca));
                 iconoImg = iconoImg.getScaledInstance(10, 10, Image.SCALE_SMOOTH);
                 ImageIcon icono = new ImageIcon(iconoImg);
@@ -82,14 +83,7 @@ public class ButtonCarta extends JButton{
         } else {
             System.err.println("ERROR AgregarMarcaJuego: Valor no válido, solo se admiten 1 y 2 para numJuego ");
         }
-        
-        
-        
-        
-        
-        
-        
-        
+
         
     }
     

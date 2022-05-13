@@ -344,7 +344,8 @@ public class Base extends javax.swing.JFrame {
 
     private void btnCarta7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCarta7MouseClicked
         // TODO add your handling code here:
-        CartaSeleccionada(evt);
+        //CartaSeleccionada(evt);
+        btnCarta7.AgregarMarcaJuego(1);
     }//GEN-LAST:event_btnCarta7MouseClicked
 
     private void btnTirarCartaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTirarCartaMouseClicked
