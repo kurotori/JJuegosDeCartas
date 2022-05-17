@@ -5,7 +5,7 @@
  */
 package baraja;
 
-import herramientas.Azar;
+//import herramientas.Azar;
 import java.util.ArrayList;
 
 /**
@@ -13,8 +13,17 @@ import java.util.ArrayList;
  * @author luiss
  */
 public class Baraja {
-    //public Carta[] cartas = new Carta[50];
+    
     public ArrayList<Carta> cartas = new ArrayList<>();
+    
+    /*enum Palos{
+        ORO,
+        ESPADA,
+        COPA,
+        BASTO
+    }
+    */
+    
     private String[] palos = {"oro","espada","copa","basto"};
     
     

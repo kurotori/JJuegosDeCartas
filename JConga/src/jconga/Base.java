@@ -25,7 +25,7 @@ public class Base extends javax.swing.JFrame {
     
     //Creamos objetos para la mano del jugador y para su botonera
     ArrayList<Carta> mano = new ArrayList<>();
-    ButtonCarta[] botonesMano = new ButtonCarta[8];
+    PanelCarta[] botonesMano = new PanelCarta[8];
     
     //Creamos un objeto para guardar los jugadores participantes
     ArrayList<Jugador> jugadores = new ArrayList<>();
@@ -50,18 +50,18 @@ public class Base extends javax.swing.JFrame {
     private void PrepararVentana(){
         //Creamos un objeto Carta para representar la baraja
         Carta imgBaraja = new Carta(0, "reves");
-        btnBaraja.setCarta(imgBaraja);
-        btnBaraja.ActualizarImagen();
+        panelBaraja.setCarta(imgBaraja);
+        //panelBaraja.ActualizarImagen();
         
         //Creamos y asignamos botones a la botonera del usuario
-        botonesMano[0] = btnCarta1;
-        botonesMano[1] = btnCarta2;
-        botonesMano[2] = btnCarta3;
-        botonesMano[3] = btnCarta4;
-        botonesMano[4] = btnCarta5;
-        botonesMano[5] = btnCarta6;
-        botonesMano[6] = btnCarta7;
-        botonesMano[7] = btnCarta8;
+        botonesMano[0] = panelCarta0;
+        botonesMano[1] = panelCarta1;
+        botonesMano[2] = panelCarta2;
+        botonesMano[3] = panelCarta3;
+        botonesMano[4] = panelCarta4;
+        botonesMano[5] = panelCarta5;
+        botonesMano[6] = panelCarta6;
+        botonesMano[7] = panelCarta7;
         
         //PARA PRUEBAS: creamos una partida con dos jugadores        
         Jugador j1 = new Jugador();
@@ -103,10 +103,10 @@ public class Base extends javax.swing.JFrame {
             
         }
         else{
-            carta = new Carta(0,"vacia");
+            carta = new Carta(0);
         }
-        btnMazo.setCarta(carta);
-        btnMazo.ActualizarImagen();
+        panelMazo.setCarta(carta);
+        //btnMazo.ActualizarImagen();
     }
     
     private void ActualizarMano(){
@@ -120,7 +120,7 @@ public class Base extends javax.swing.JFrame {
                 carta = new Carta(0, "vacia");
             }
             botonesMano[i].setCarta(carta);
-            botonesMano[i].ActualizarImagen();
+            //botonesMano[i].ActualizarImagen();
         }
         cartasEnMano = mano.size();
     }
@@ -135,125 +135,28 @@ public class Base extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnCarta2 = new jconga.ButtonCarta();
-        btnCarta1 = new jconga.ButtonCarta();
-        btnCarta3 = new jconga.ButtonCarta();
-        btnCarta4 = new jconga.ButtonCarta();
-        btnCarta5 = new jconga.ButtonCarta();
-        btnCarta6 = new jconga.ButtonCarta();
-        btnCarta7 = new jconga.ButtonCarta();
-        btnCarta8 = new jconga.ButtonCarta();
-        btnBaraja = new jconga.ButtonCarta();
-        btnMazo = new jconga.ButtonCarta();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblCartasBaraja = new javax.swing.JLabel();
         lblCartasMazo = new javax.swing.JLabel();
         btnTirarCarta = new javax.swing.JButton();
         btnHacerJuego = new javax.swing.JButton();
+        panelMazo = new jconga.PanelCarta();
+        panelBaraja = new jconga.PanelCarta();
+        panelCarta0 = new jconga.PanelCarta();
+        panelCarta1 = new jconga.PanelCarta();
+        panelCarta2 = new jconga.PanelCarta();
+        panelCarta3 = new jconga.PanelCarta();
+        panelCarta4 = new jconga.PanelCarta();
+        panelCarta5 = new jconga.PanelCarta();
+        panelCarta6 = new jconga.PanelCarta();
+        panelCarta7 = new jconga.PanelCarta();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(1100, 600));
-        setPreferredSize(new java.awt.Dimension(1100, 600));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnCarta2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        btnCarta2.setName(""); // NOI18N
-        btnCarta2.setPreferredSize(new java.awt.Dimension(108, 164));
-        btnCarta2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCarta2MouseClicked(evt);
-            }
-        });
-        getContentPane().add(btnCarta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, -1, -1));
-
-        btnCarta1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        btnCarta1.setName(""); // NOI18N
-        btnCarta1.setPreferredSize(new java.awt.Dimension(108, 164));
-        btnCarta1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCarta1MouseClicked(evt);
-            }
-        });
-        getContentPane().add(btnCarta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, -1));
-
-        btnCarta3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        btnCarta3.setName(""); // NOI18N
-        btnCarta3.setPreferredSize(new java.awt.Dimension(108, 164));
-        btnCarta3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCarta3MouseClicked(evt);
-            }
-        });
-        getContentPane().add(btnCarta3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, -1, -1));
-
-        btnCarta4.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        btnCarta4.setName(""); // NOI18N
-        btnCarta4.setPreferredSize(new java.awt.Dimension(108, 164));
-        btnCarta4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCarta4MouseClicked(evt);
-            }
-        });
-        getContentPane().add(btnCarta4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, -1, -1));
-
-        btnCarta5.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        btnCarta5.setName(""); // NOI18N
-        btnCarta5.setPreferredSize(new java.awt.Dimension(108, 164));
-        btnCarta5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCarta5MouseClicked(evt);
-            }
-        });
-        getContentPane().add(btnCarta5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, -1, -1));
-
-        btnCarta6.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        btnCarta6.setName(""); // NOI18N
-        btnCarta6.setPreferredSize(new java.awt.Dimension(108, 164));
-        btnCarta6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCarta6MouseClicked(evt);
-            }
-        });
-        getContentPane().add(btnCarta6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, -1, -1));
-
-        btnCarta7.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        btnCarta7.setName(""); // NOI18N
-        btnCarta7.setPreferredSize(new java.awt.Dimension(108, 164));
-        btnCarta7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCarta7MouseClicked(evt);
-            }
-        });
-        getContentPane().add(btnCarta7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 370, -1, -1));
-
-        btnCarta8.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        btnCarta8.setName(""); // NOI18N
-        btnCarta8.setPreferredSize(new java.awt.Dimension(108, 164));
-        btnCarta8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCarta8MouseClicked(evt);
-            }
-        });
-        getContentPane().add(btnCarta8, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 370, -1, -1));
-
-        btnBaraja.setPreferredSize(new java.awt.Dimension(108, 164));
-        btnBaraja.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBarajaMouseClicked(evt);
-            }
-        });
-        getContentPane().add(btnBaraja, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, -1, -1));
-
-        btnMazo.setPreferredSize(new java.awt.Dimension(108, 164));
-        btnMazo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMazoMouseClicked(evt);
-            }
-        });
-        getContentPane().add(btnMazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, -1));
 
         jLabel1.setText("Baraja");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, -1, -1));
@@ -269,7 +172,6 @@ public class Base extends javax.swing.JFrame {
         lblCartasMazo.setText("...");
         getContentPane().add(lblCartasMazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, -1, -1));
 
-        btnTirarCarta.setBackground(new java.awt.Color(255, 255, 255));
         btnTirarCarta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jconga/imagen/descartarCarta.png"))); // NOI18N
         btnTirarCarta.setText("Tirar Carta");
         btnTirarCarta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -283,9 +185,8 @@ public class Base extends javax.swing.JFrame {
                 btnTirarCartaMouseClicked(evt);
             }
         });
-        getContentPane().add(btnTirarCarta, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 480, 140, 50));
+        getContentPane().add(btnTirarCarta, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 470, 140, 50));
 
-        btnHacerJuego.setBackground(new java.awt.Color(255, 255, 255));
         btnHacerJuego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jconga/imagen/juego.png"))); // NOI18N
         btnHacerJuego.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnHacerJuego.setEnabled(false);
@@ -299,60 +200,26 @@ public class Base extends javax.swing.JFrame {
                 btnHacerJuegoMouseClicked(evt);
             }
         });
-        getContentPane().add(btnHacerJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 370, 140, 50));
+        getContentPane().add(btnHacerJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 360, 140, 50));
+        getContentPane().add(panelMazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, -1));
+        getContentPane().add(panelBaraja, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, -1, -1));
+        getContentPane().add(panelCarta0, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 360, -1, -1));
+        getContentPane().add(panelCarta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, -1, -1));
+        getContentPane().add(panelCarta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 360, -1, -1));
+        getContentPane().add(panelCarta3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
+        getContentPane().add(panelCarta4, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 360, -1, -1));
+        getContentPane().add(panelCarta5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 360, -1, -1));
+        getContentPane().add(panelCarta6, new org.netbeans.lib.awtextra.AbsoluteConstraints(705, 360, -1, -1));
+        getContentPane().add(panelCarta7, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 360, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnBarajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBarajaMouseClicked
-        // TODO add your handling code here:
-        jugadores.get(0).LevantarCarta(baraja);
-        DesmarcarTodas();
-        ActualizarMano();
-        ActualizarCantBaraja();
-        ActivarBotones();
-    }//GEN-LAST:event_btnBarajaMouseClicked
-
-    private void btnCarta1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCarta1MouseClicked
-        CartaSeleccionada(evt);
-    }//GEN-LAST:event_btnCarta1MouseClicked
-
-    private void btnCarta2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCarta2MouseClicked
-        // TODO add your handling code here:
-        CartaSeleccionada(evt);
-    }//GEN-LAST:event_btnCarta2MouseClicked
-
-    private void btnCarta3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCarta3MouseClicked
-        // TODO add your handling code here:
-        CartaSeleccionada(evt);
-    }//GEN-LAST:event_btnCarta3MouseClicked
-
-    private void btnCarta4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCarta4MouseClicked
-        // TODO add your handling code here:
-        CartaSeleccionada(evt);
-    }//GEN-LAST:event_btnCarta4MouseClicked
-
-    private void btnCarta5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCarta5MouseClicked
-        // TODO add your handling code here:
-        CartaSeleccionada(evt);
-    }//GEN-LAST:event_btnCarta5MouseClicked
-
-    private void btnCarta6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCarta6MouseClicked
-        // TODO add your handling code here:
-        CartaSeleccionada(evt);
-    }//GEN-LAST:event_btnCarta6MouseClicked
-
-    private void btnCarta7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCarta7MouseClicked
-        // TODO add your handling code here:
-        //CartaSeleccionada(evt);
-        btnCarta7.AgregarMarcaJuego(1);
-    }//GEN-LAST:event_btnCarta7MouseClicked
 
     private void btnTirarCartaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTirarCartaMouseClicked
         // TODO add your handling code here:
         Carta cartaSel = null;
         
-        for (ButtonCarta btn: botonesMano) {
+        for (PanelCarta btn: botonesMano) {
             if (btn.seleccionada) {
                 cartaSel = btn.getCarta();
             }
@@ -364,25 +231,14 @@ public class Base extends javax.swing.JFrame {
         ActivarBotones();
     }//GEN-LAST:event_btnTirarCartaMouseClicked
 
-    private void btnCarta8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCarta8MouseClicked
-        // TODO add your handling code here:
-        CartaSeleccionada(evt);
-    }//GEN-LAST:event_btnCarta8MouseClicked
-
-    private void btnMazoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMazoMouseClicked
-        // TODO add your handling code here:
-        
-        jugadores.get(0).LevantarCarta(mazo);
-        DesmarcarTodas();
-        ActualizarCantBaraja();
-        ActualizarMano();
-        ActivarBotones();
-    }//GEN-LAST:event_btnMazoMouseClicked
-
+    /**
+     * 
+     * @param evt 
+     */
     private void btnHacerJuegoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHacerJuegoMouseClicked
         // TODO add your handling code here:
         ArrayList<Carta> juego = new ArrayList<>();
-        for(ButtonCarta btnCarta:botonesMano){
+        for(PanelCarta btnCarta:botonesMano){
             
             if (btnCarta.seleccionada) {
                 Carta carta = btnCarta.getCarta();
@@ -399,67 +255,79 @@ public class Base extends javax.swing.JFrame {
 
     private void DesmarcarTodas(){
         cartasSeleccionadas = 0;
-        for(ButtonCarta btn: botonesMano){
-            btn.seleccionada = false;
-            btn.Mover();
+        for(PanelCarta btn: botonesMano){
+            btn.Seleccionar(false);
+            //btn.seleccionada = false;
+            //btn.Mover();
         }
     }
     
+    /**
+     * 
+     * @param evt 
+     */
     private void CartaSeleccionada(java.awt.event.MouseEvent evt){
         //Se ubica la carta clickeada
-        ButtonCarta btn = (ButtonCarta)evt.getSource();
+        PanelCarta btn = (PanelCarta)evt.getSource();
         
         System.out.println(btn.getCarta().getNumero()+btn.getCarta().getPalo()+":"+btn.seleccionada);
         
         if (btn.seleccionada) {
-            btn.seleccionada = false;
+            //btn.seleccionada = false;
             cartasSeleccionadas--;
         }
         else{ 
-            btn.seleccionada = true;
+            //btn.seleccionada = true;
             cartasSeleccionadas++;
         }
         
-        btn.Mover();
+        btn.Seleccionar();
         ActivarBotones();
         //btn.PonerBordes();
         
         
     }
     
+    /**
+     * 
+     */
     private void ActivarBotones(){
-        if (cartasEnMano > 7 && cartasSeleccionadas == 1) {
-            btnTirarCarta.setEnabled(true);
-        }
-        else{
-            btnTirarCarta.setEnabled(false);
-        }
-        
-        if (cartasEnMano > 7 && cartasSeleccionadas > 2) {
-            btnHacerJuego.setEnabled(true);
-        }
-        else{
-            btnHacerJuego.setEnabled(false);
+        if (cartasEnMano > 7 ) {
+            
+            if (cartasSeleccionadas == 1) {
+                btnTirarCarta.setEnabled(true);
+            }
+            else{
+                btnTirarCarta.setEnabled(false);
+            }
+            
+            if (cartasSeleccionadas > 2) {
+                btnHacerJuego.setEnabled(true);
+            }
+            else{
+                btnHacerJuego.setEnabled(false);
+            }
+            
         }
         
         if(cartasEnMano < 8){
             if(mazo.isEmpty()){
-                btnMazo.setEnabled(false);
+                panelMazo.setEnabled(false);
             }
             else{
-                btnMazo.setEnabled(true);
+                panelMazo.setEnabled(true);
             }
             
             if (baraja.cartas.isEmpty()) {
-                btnBaraja.setEnabled(false);
+                panelBaraja.setEnabled(false);
             }
             else{
-                btnBaraja.setEnabled(true);
+                panelBaraja.setEnabled(true);
             }
         }
         else{
-             btnBaraja.setEnabled(false);
-              btnMazo.setEnabled(false);
+             panelBaraja.setEnabled(false);
+             panelMazo.setEnabled(false);
         }
     }
     /**
@@ -498,21 +366,21 @@ public class Base extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private jconga.ButtonCarta btnBaraja;
-    private jconga.ButtonCarta btnCarta1;
-    private jconga.ButtonCarta btnCarta2;
-    private jconga.ButtonCarta btnCarta3;
-    private jconga.ButtonCarta btnCarta4;
-    private jconga.ButtonCarta btnCarta5;
-    private jconga.ButtonCarta btnCarta6;
-    private jconga.ButtonCarta btnCarta7;
-    private jconga.ButtonCarta btnCarta8;
     private javax.swing.JButton btnHacerJuego;
-    private jconga.ButtonCarta btnMazo;
     private javax.swing.JButton btnTirarCarta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblCartasBaraja;
     private javax.swing.JLabel lblCartasMazo;
+    private jconga.PanelCarta panelBaraja;
+    private jconga.PanelCarta panelCarta0;
+    private jconga.PanelCarta panelCarta1;
+    private jconga.PanelCarta panelCarta2;
+    private jconga.PanelCarta panelCarta3;
+    private jconga.PanelCarta panelCarta4;
+    private jconga.PanelCarta panelCarta5;
+    private jconga.PanelCarta panelCarta6;
+    private jconga.PanelCarta panelCarta7;
+    private jconga.PanelCarta panelMazo;
     // End of variables declaration//GEN-END:variables
 }

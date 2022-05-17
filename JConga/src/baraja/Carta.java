@@ -18,6 +18,13 @@ public class Carta implements Comparable<Carta> {
         this.numero = numero;
         this.palo = palo;
     }
+    
+    public Carta(int numero){
+        if(numero == 0){
+            this.numero=numero;
+            this.palo="vacio";
+        }
+    }
 
     /**
      * Devuelve el número de la carta
@@ -36,8 +43,9 @@ public class Carta implements Comparable<Carta> {
     }
     
     public String rutaImagen(){
+        //String ruta = "imagen/baraja/"+palo+numero+"_ch.gif";
         String ruta = "imagen/baraja/"+palo+numero+"_ch.png";
-        System.out.println(ruta);
+        //System.out.println(ruta);
         return ruta;
     }
     
