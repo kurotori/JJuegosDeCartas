@@ -22,7 +22,7 @@ public class Carta implements Comparable<Carta> {
     public Carta(int numero){
         if(numero == 0){
             this.numero=numero;
-            this.palo="vacio";
+            this.palo="vacia";
         }
     }
 
@@ -44,7 +44,7 @@ public class Carta implements Comparable<Carta> {
     
     public String rutaImagen(){
         //String ruta = "imagen/baraja/"+palo+numero+"_ch.gif";
-        String ruta = "imagen/baraja/"+palo+numero+"_ch.png";
+        String ruta = "imagen/baraja/"+palo+numero+".png";
         //System.out.println(ruta);
         return ruta;
     }

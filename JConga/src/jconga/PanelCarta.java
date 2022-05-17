@@ -112,6 +112,7 @@ public class PanelCarta extends javax.swing.JPanel {
      */
     public void ActualizarImagen(){
         String ruta = carta.rutaImagen();
+        System.out.println("carta:"+ruta);
         try{
             Image img = ImageIO.read(getClass().getResource(ruta));
             //img = img.getScaledInstance(104, 160, Image.SCALE_AREA_AVERAGING);
