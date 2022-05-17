@@ -152,6 +152,7 @@ public class PanelCarta extends javax.swing.JPanel {
      * Selecciona o deselecciona la carta, aplicando el ícono correspondiente
      */
     public void Seleccionar(){
+        System.out.println(this.carta.getNumero()+this.carta.getPalo()+" clickeada");
         this.seleccionada = !this.seleccionada;
         MarcarSeleccion();
     }
@@ -176,7 +177,7 @@ public class PanelCarta extends javax.swing.JPanel {
                 System.err.println("ERROR:"+e.getMessage());
             }
         }
-        this.imgSeleccion.setIcon(null);
+        this.imgSeleccion.setIcon(icono);
         
     }
     
