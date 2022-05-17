@@ -7,10 +7,8 @@ package jconga;
 
 import baraja.Baraja;
 import baraja.Carta;
-import java.awt.Color;
-import java.awt.Rectangle;
 import java.util.ArrayList;
-import javax.swing.border.LineBorder;
+
 
 
 /**
@@ -153,6 +151,7 @@ public class Base extends javax.swing.JFrame {
         panelCarta7 = new jconga.PanelCarta();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(1100, 600));
         setResizable(false);

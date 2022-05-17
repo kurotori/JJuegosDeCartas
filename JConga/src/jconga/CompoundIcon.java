@@ -4,6 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
+ * TODO: Eliminar clase  CompoundIcon del proyecto, ya no es necesaria
  *  Tomado de: https://tips4java.wordpress.com/2009/03/29/compound-icon/
  *  Código por Rob Camick
  * 
