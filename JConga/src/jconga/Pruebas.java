@@ -65,6 +65,12 @@ public class Pruebas extends javax.swing.JFrame {
             }
         });
 
+        panelCarta1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelCarta1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,6 +125,10 @@ public class Pruebas extends javax.swing.JFrame {
         // TODO add your handling code here:
         panelCarta1.AgregarMarcaJuego(2);
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void panelCarta1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCarta1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panelCarta1MouseClicked
 
     /**
      * @param args the command line arguments

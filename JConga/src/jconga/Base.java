@@ -7,6 +7,7 @@ package jconga;
 
 import baraja.Baraja;
 import baraja.Carta;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 
@@ -61,6 +62,16 @@ public class Base extends javax.swing.JFrame {
         botonesMano[6] = panelCarta6;
         botonesMano[7] = panelCarta7;
         
+        for (PanelCarta btn : botonesMano) {
+            btn.addMouseListener(
+                    new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt){
+                            CartaSeleccionada(evt);
+                        }
+                    }
+            );
+        }
+        
         //PARA PRUEBAS: creamos una partida con dos jugadores        
         Jugador j1 = new Jugador();
         Jugador j2 = new Jugador();
@@ -75,15 +86,15 @@ public class Base extends javax.swing.JFrame {
         
         //Se actualiza la cantidad de cartas en la baraja, en la mano
         // y se activa la botonera.
-        ActualizarCantBaraja();
+        ActualizarBaraja();
         ActualizarMano();
         ActivarBotones();
     }
     
     /**
-     * Permite actualizar la cantidad de cartas en la baraja.
+     * Permite actualizar la cantidad de cartas en la baraja y en el mazo.
      */
-    private void ActualizarCantBaraja(){
+    private void ActualizarBaraja(){
         //Se obtienen la catidad de cartas en la baraja y en el mazo
         int cantidadB = baraja.cartas.size();
         int cantidadM = mazo.size();
@@ -107,9 +118,14 @@ public class Base extends javax.swing.JFrame {
         //btnMazo.ActualizarImagen();
     }
     
+    /**
+     * Actualiza el contenido de la mano hacia los botones de la baraja
+     */
     private void ActualizarMano(){
         ArrayList<Carta> mano = jugadores.get(0).mano;
         Carta carta = null;
+        
+        
         for(int i = 0; i<8; i++){
             if ( i < mano.size() ) {
                 carta = mano.get(i);
@@ -118,9 +134,9 @@ public class Base extends javax.swing.JFrame {
                 carta = new Carta(0, "vacia");
             }
             botonesMano[i].setCarta(carta);
-            //botonesMano[i].ActualizarImagen();
         }
         cartasEnMano = mano.size();
+        DesmarcarTodas();
     }
     
 
@@ -200,7 +216,19 @@ public class Base extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnHacerJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 360, 140, 50));
+
+        panelMazo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelMazoMouseClicked(evt);
+            }
+        });
         getContentPane().add(panelMazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, -1));
+
+        panelBaraja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelBarajaMouseClicked(evt);
+            }
+        });
         getContentPane().add(panelBaraja, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, -1, -1));
         getContentPane().add(panelCarta0, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 360, -1, -1));
         getContentPane().add(panelCarta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, -1, -1));
@@ -214,8 +242,11 @@ public class Base extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción cuando el jugador da click en el botón <i>Tirar Carta</i>
+     * @param evt 
+     */
     private void btnTirarCartaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTirarCartaMouseClicked
-        // TODO add your handling code here:
         Carta cartaSel = null;
         
         for (PanelCarta btn: botonesMano) {
@@ -223,46 +254,78 @@ public class Base extends javax.swing.JFrame {
                 cartaSel = btn.getCarta();
             }
         }
+        
         jugadores.get(0).TirarCarta(cartaSel, mazo);
         DesmarcarTodas();
-        ActualizarCantBaraja();
+        ActualizarBaraja();
         ActualizarMano();
         ActivarBotones();
     }//GEN-LAST:event_btnTirarCartaMouseClicked
 
     /**
-     * 
+     * Acción cuando el jugador da click en el botón <i>Hacer Juego</i>
      * @param evt 
      */
     private void btnHacerJuegoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHacerJuegoMouseClicked
-        // TODO add your handling code here:
-        ArrayList<Carta> juego = new ArrayList<>();
-        for(PanelCarta btnCarta:botonesMano){
-            
-            if (btnCarta.seleccionada) {
+
+        if (cartasSeleccionadas>2) {
+            ArrayList<Carta> juego = new ArrayList<>();
+            for(PanelCarta btnCarta:botonesMano){
+                if (btnCarta.seleccionada) {
                 Carta carta = btnCarta.getCarta();
                 juego.add(carta);
+                }
             }
-            
+       
+            ArmarJuego armarJuego = new ArmarJuego(this, true,juego);
+            armarJuego.setVisible(true);
         }
-        
-        ArmarJuego armarJuego = new ArmarJuego(this, true,juego);
-        armarJuego.setVisible(true);
         //PrepararJuego prepJuego = new PrepararJuego(juego);
         //prepJuego.setVisible(true);
     }//GEN-LAST:event_btnHacerJuegoMouseClicked
 
+    /**
+     * Acción cuando el usuario da click en el mazo, tomando una carta del mismo.
+     * @param evt 
+     */
+    private void panelMazoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMazoMouseClicked
+        
+        if(!mazo.isEmpty()){
+            Carta cartaMazo = mazo.remove(0);
+
+            jugadores.get(0).mano.add(cartaMazo);
+            ActualizarBaraja();
+            ActualizarMano();
+        }
+        
+        
+    }//GEN-LAST:event_panelMazoMouseClicked
+
+    /**
+     * Acción cuando el jugador da click en la baraja, tomando una carta de la misma
+     * @param evt 
+     */
+    private void panelBarajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBarajaMouseClicked
+        Carta cartaBaraja = baraja.cartas.remove(0);
+        
+        jugadores.get(0).mano.add(cartaBaraja);
+        ActualizarBaraja();
+        ActualizarMano();
+        
+    }//GEN-LAST:event_panelBarajaMouseClicked
+
+    /**
+     * Permite de-seleccionar todas las cartas de la mano del jugador
+     */
     private void DesmarcarTodas(){
         cartasSeleccionadas = 0;
         for(PanelCarta btn: botonesMano){
             btn.Seleccionar(false);
-            //btn.seleccionada = false;
-            //btn.Mover();
         }
     }
     
     /**
-     * 
+     * Permite seleccionar una carta cuando esta es elegida por el jugador
      * @param evt 
      */
     private void CartaSeleccionada(java.awt.event.MouseEvent evt){
@@ -271,16 +334,16 @@ public class Base extends javax.swing.JFrame {
         
         System.out.println(btn.getCarta().getNumero()+btn.getCarta().getPalo()+":"+btn.seleccionada);
         
+        btn.Seleccionar();
+        
         if (btn.seleccionada) {
-            //btn.seleccionada = false;
             cartasSeleccionadas--;
         }
         else{ 
-            //btn.seleccionada = true;
             cartasSeleccionadas++;
         }
         
-        btn.Seleccionar();
+        
         ActivarBotones();
         //btn.PonerBordes();
         
@@ -288,7 +351,7 @@ public class Base extends javax.swing.JFrame {
     }
     
     /**
-     * 
+     * Activa o desactiva los botones de acuerdo a las circunstancias del juego
      */
     private void ActivarBotones(){
         if (cartasEnMano > 7 ) {

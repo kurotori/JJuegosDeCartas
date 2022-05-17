@@ -80,6 +80,9 @@
       </Events>
     </Component>
     <Component class="jconga.PanelCarta" name="panelCarta1">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelCarta1MouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

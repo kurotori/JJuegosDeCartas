@@ -4,10 +4,14 @@
  */
 package jconga;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author sebastian
  */
 public class Partida {
+    private ArrayList<Jugador> jugadores = new ArrayList<>();
+    
     
 }
