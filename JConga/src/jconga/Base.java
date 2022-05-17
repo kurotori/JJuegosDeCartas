@@ -306,12 +306,12 @@ public class Base extends javax.swing.JFrame {
      * @param evt 
      */
     private void panelBarajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBarajaMouseClicked
-        Carta cartaBaraja = baraja.cartas.remove(0);
-        
-        jugadores.get(0).mano.add(cartaBaraja);
-        ActualizarBaraja();
-        ActualizarMano();
-        
+        if (jugadores.get(0).mano.size()<8) {
+            Carta cartaBaraja = baraja.cartas.remove(0);
+            jugadores.get(0).mano.add(cartaBaraja);
+            ActualizarBaraja();
+            ActualizarMano();
+        }
     }//GEN-LAST:event_panelBarajaMouseClicked
 
     /**
