@@ -62,9 +62,11 @@ public class Base extends javax.swing.JFrame {
         botonesMano[6] = panelCarta6;
         botonesMano[7] = panelCarta7;
         
+        //Añadimos el evento correspondiente a cada botón 
         for (PanelCarta btn : botonesMano) {
             btn.addMouseListener(
                     new java.awt.event.MouseAdapter() {
+                        @Override
                         public void mouseClicked(java.awt.event.MouseEvent evt){
                             CartaSeleccionada(evt);
                         }
@@ -122,20 +124,20 @@ public class Base extends javax.swing.JFrame {
      * Actualiza el contenido de la mano hacia los botones de la baraja
      */
     private void ActualizarMano(){
-        ArrayList<Carta> mano = jugadores.get(0).mano;
-        Carta carta = null;
+        ArrayList<Carta> manoJ = jugadores.get(0).mano;
+        Carta carta;
         
         
         for(int i = 0; i<8; i++){
-            if ( i < mano.size() ) {
-                carta = mano.get(i);
+            if ( i < manoJ.size() ) {
+                carta = manoJ.get(i);
             }
             else{
                 carta = new Carta(0, "vacia");
             }
             botonesMano[i].setCarta(carta);
         }
-        cartasEnMano = mano.size();
+        cartasEnMano = manoJ.size();
         DesmarcarTodas();
     }
     
@@ -297,8 +299,6 @@ public class Base extends javax.swing.JFrame {
             ActualizarBaraja();
             ActualizarMano();
         }
-        
-        
     }//GEN-LAST:event_panelMazoMouseClicked
 
     /**
@@ -332,6 +332,7 @@ public class Base extends javax.swing.JFrame {
         //Se ubica la carta clickeada
         PanelCarta btn = (PanelCarta)evt.getSource();
         
+        //Para Control
         System.out.println(btn.getCarta().getNumero()+btn.getCarta().getPalo()+":"+btn.seleccionada);
         
         btn.Seleccionar();
