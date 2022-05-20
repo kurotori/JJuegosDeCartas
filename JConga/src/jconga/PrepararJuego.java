@@ -6,9 +6,9 @@
 package jconga;
 
 import baraja.Carta;
-import java.awt.Rectangle;
+//import java.awt.Rectangle;
 import java.util.ArrayList;
-import javax.swing.JPanel;
+//import javax.swing.JPanel;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
 /**
@@ -17,7 +17,7 @@ import org.netbeans.lib.awtextra.AbsoluteConstraints;
  */
 public class PrepararJuego extends javax.swing.JFrame {
     
-    private ArrayList<ButtonCarta> botonesJuego = new ArrayList<>();
+    private ArrayList<PanelCarta> botonesJuego = new ArrayList<>();
     
     /**
      * Creates new form PrepararJuego
@@ -34,7 +34,7 @@ public class PrepararJuego extends javax.swing.JFrame {
         
              
         for(Carta carta:cartas){
-            ButtonCarta btn = new ButtonCarta();
+            PanelCarta btn = new PanelCarta();
             
             getContentPane().add(btn, new AbsoluteConstraints(posX,posY,108,164));
             getContentPane().revalidate();
