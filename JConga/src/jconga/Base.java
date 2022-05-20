@@ -251,17 +251,21 @@ public class Base extends javax.swing.JFrame {
     private void btnTirarCartaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTirarCartaMouseClicked
         Carta cartaSel = null;
         
-        for (PanelCarta btn: botonesMano) {
-            if (btn.seleccionada) {
-                cartaSel = btn.getCarta();
+        if (btnTirarCarta.isEnabled()) {
+            for (PanelCarta btn: botonesMano) {
+                if (btn.seleccionada) {
+                    cartaSel = btn.getCarta();
+                }
             }
+
+            jugadores.get(0).TirarCarta(cartaSel, mazo);
+            DesmarcarTodas();
+            ActualizarBaraja();
+            ActualizarMano();
+            ActivarBotones();   
         }
         
-        jugadores.get(0).TirarCarta(cartaSel, mazo);
-        DesmarcarTodas();
-        ActualizarBaraja();
-        ActualizarMano();
-        ActivarBotones();
+        //ActivarBotones();
     }//GEN-LAST:event_btnTirarCartaMouseClicked
 
     /**
@@ -292,12 +296,13 @@ public class Base extends javax.swing.JFrame {
      */
     private void panelMazoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMazoMouseClicked
         
-        if(!mazo.isEmpty()){
+        if( !mazo.isEmpty() ){
             Carta cartaMazo = mazo.remove(0);
 
             jugadores.get(0).mano.add(cartaMazo);
             ActualizarBaraja();
             ActualizarMano();
+            ActivarBotones();
         }
     }//GEN-LAST:event_panelMazoMouseClicked
 
@@ -311,6 +316,7 @@ public class Base extends javax.swing.JFrame {
             jugadores.get(0).mano.add(cartaBaraja);
             ActualizarBaraja();
             ActualizarMano();
+            ActivarBotones();
         }
     }//GEN-LAST:event_panelBarajaMouseClicked
 
@@ -331,17 +337,14 @@ public class Base extends javax.swing.JFrame {
     private void CartaSeleccionada(java.awt.event.MouseEvent evt){
         //Se ubica la carta clickeada
         PanelCarta btn = (PanelCarta)evt.getSource();
-        
-        //Para Control
-        System.out.println(btn.getCarta().getNumero()+btn.getCarta().getPalo()+":"+btn.seleccionada);
-        
         btn.Seleccionar();
-        
+        //Para Control 
+        System.out.println(btn.getCarta().getNumero()+btn.getCarta().getPalo()+":"+btn.seleccionada);
         if (btn.seleccionada) {
-            cartasSeleccionadas--;
+            cartasSeleccionadas++;
         }
         else{ 
-            cartasSeleccionadas++;
+            cartasSeleccionadas--;
         }
         
         
@@ -369,8 +372,11 @@ public class Base extends javax.swing.JFrame {
             }
             else{
                 btnHacerJuego.setEnabled(false);
-            }
-            
+            }  
+        }
+        else{
+            btnHacerJuego.setEnabled(false);
+            btnTirarCarta.setEnabled(false);
         }
         
         if(cartasEnMano < 8){
@@ -380,7 +386,7 @@ public class Base extends javax.swing.JFrame {
             else{
                 panelMazo.setEnabled(true);
             }
-            
+        //    
             if (baraja.cartas.isEmpty()) {
                 panelBaraja.setEnabled(false);
             }
@@ -392,6 +398,8 @@ public class Base extends javax.swing.JFrame {
              panelBaraja.setEnabled(false);
              panelMazo.setEnabled(false);
         }
+        
+        System.out.println("Seleccionadas: "+ cartasSeleccionadas);
     }
     /**
      * @param args the command line arguments

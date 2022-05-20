@@ -41,6 +41,7 @@ public class PrepararJuego extends javax.swing.JFrame {
             validate();
             posX = posX + 110;        
 
+            
             btn.setCarta(carta);
             btn.ActualizarImagen();
             
