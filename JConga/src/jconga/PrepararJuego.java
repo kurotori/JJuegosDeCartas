@@ -24,13 +24,25 @@ public class PrepararJuego extends javax.swing.JFrame {
      */
     public PrepararJuego() {
         initComponents();
+        //Para pruebas
+        //System.out.println("H:"+this.getSize().height + " W:"+this.getSize().width);
     }
     
     public PrepararJuego(ArrayList<Carta> cartas) {
         initComponents();
         
+        /**
+         * Tamaño base de la ventana: H:277 W:350
+         */
+        
+        this.setSize(
+                (10+(110*cartas.size())),
+                this.getSize().height);
+        
         int posX = 10;
         int posY = 10;
+        
+        
         
              
         for(Carta carta:cartas){

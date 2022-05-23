@@ -20,7 +20,7 @@ import org.netbeans.lib.awtextra.AbsoluteConstraints;
 public class ArmarJuego extends javax.swing.JDialog {
 
     // Botones para mostrar las cartas del juego
-    private ArrayList<ButtonCarta> botonesJuego = new ArrayList<>();
+    private ArrayList<PanelCarta> botonesJuego = new ArrayList<>();
     //Objeto auxiliar para la carta seleccionada
     ButtonCarta cartaSel;
     
@@ -45,9 +45,14 @@ public class ArmarJuego extends javax.swing.JDialog {
         int posX = 10;
         int posY = 10;
         
+        //Establecemos el tamaño de la ventana según la cantidad de cartas
+        this.setSize(
+                (30+(110*cartas.size())),
+                this.getSize().height);
+        
         //Creación y ubicación de las cartas en la ventana
         for(Carta carta:cartas){
-            ButtonCarta btn = new ButtonCarta();
+            PanelCarta btn = new PanelCarta();
             
             getContentPane().add(btn);
             Rectangle posicion = new Rectangle(posX,posY,108,164);
@@ -60,6 +65,16 @@ public class ArmarJuego extends javax.swing.JDialog {
             btn.setCarta(carta);
             btn.ActualizarImagen();
             
+            
+            btn.addMouseListener(
+                    new java.awt.event.MouseAdapter() {
+                        @Override
+                        public void mouseClicked(java.awt.event.MouseEvent evt){
+                            btn.Seleccionar();
+                        }
+                    }
+            );
+            /*
             btn.addActionListener(
                     new ActionListener() {
                         @Override
@@ -70,7 +85,7 @@ public class ArmarJuego extends javax.swing.JDialog {
                             }
                         }
             );
-            
+            */
             botonesJuego.add(btn);
         }
     }
