@@ -19,10 +19,12 @@ import org.netbeans.lib.awtextra.AbsoluteConstraints;
  */
 public class ArmarJuego extends javax.swing.JDialog {
 
+    private ArrayList<Carta> cartas = new ArrayList<>();
     // Botones para mostrar las cartas del juego
     private ArrayList<PanelCarta> botonesJuego = new ArrayList<>();
     //Objeto auxiliar para la carta seleccionada
-    ButtonCarta cartaSel;
+    PanelCarta cartaSel;
+    
     
     /** Creates new form ArmarJuego: NO USAR */
     public ArmarJuego(java.awt.Frame parent, boolean modal ) {
@@ -46,12 +48,14 @@ public class ArmarJuego extends javax.swing.JDialog {
         int posY = 10;
         
         //Establecemos el tamaño de la ventana según la cantidad de cartas
-        this.setSize(
+        /*this.setSize(
                 (30+(110*cartas.size())),
                 this.getSize().height);
-        
+        */
         //Creación y ubicación de las cartas en la ventana
-        for(Carta carta:cartas){
+        this.cartas = cartas;
+        AsignarCartas();
+        /*for(Carta carta:cartas){
             PanelCarta btn = new PanelCarta();
             
             getContentPane().add(btn);
@@ -60,12 +64,7 @@ public class ArmarJuego extends javax.swing.JDialog {
             
             getContentPane().revalidate();
             validate();
-            
-            posX = posX + 110;
-            btn.setCarta(carta);
-            btn.ActualizarImagen();
-            
-            
+
             btn.addMouseListener(
                     new java.awt.event.MouseAdapter() {
                         @Override
@@ -74,20 +73,15 @@ public class ArmarJuego extends javax.swing.JDialog {
                         }
                     }
             );
-            /*
-            btn.addActionListener(
-                    new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                            btn.seleccionada = true;
-                            btn.Mover();
-                            }
-                        }
-            );
-            */
+            
             botonesJuego.add(btn);
-        }
+            
+            btn.setCarta(carta);
+            btn.ActualizarImagen();
+            posX = posX + 110;
+
+            
+        }*/
     }
 
     /** This method is called from within the constructor to
@@ -149,7 +143,7 @@ public class ArmarJuego extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMovDerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMovDerMouseClicked
-
+        
         
     }//GEN-LAST:event_btnMovDerMouseClicked
 
@@ -193,6 +187,42 @@ public class ArmarJuego extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+    
+    
+    private void AsignarCartas(){
+        //Parámetros de posicionamiento
+        int posX = 10;
+        int posY = 10;
+        
+        getContentPane().removeAll();
+        
+        for (Carta carta : cartas) {
+            PanelCarta btn = new PanelCarta();
+            
+            getContentPane().add(btn);
+            Rectangle posicion = new Rectangle(posX,posY,108,164);
+            btn.setBounds(posicion);
+            
+            getContentPane().revalidate();
+            validate();
+
+            btn.addMouseListener(
+                    new java.awt.event.MouseAdapter() {
+                        @Override
+                        public void mouseClicked(java.awt.event.MouseEvent evt){
+                            btn.Seleccionar();
+                        }
+                    }
+            );
+            
+            botonesJuego.add(btn);
+            
+            btn.setCarta(carta);
+            btn.ActualizarImagen();
+            posX = posX + 110;
+            
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
