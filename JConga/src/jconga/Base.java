@@ -124,9 +124,8 @@ public class Base extends javax.swing.JFrame {
      * Actualiza el contenido de la mano hacia los botones de la baraja
      */
     private void ActualizarMano(){
-        ArrayList<Carta> manoJ = jugadores.get(0).mano;
+        ArrayList<Carta> manoJ = jugadores.get(0).getMano();
         Carta carta;
-        
         
         for(int i = 0; i<8; i++){
             if ( i < manoJ.size() ) {
@@ -297,9 +296,8 @@ public class Base extends javax.swing.JFrame {
     private void panelMazoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMazoMouseClicked
         
         if( !mazo.isEmpty() ){
-            Carta cartaMazo = mazo.remove(0);
-
-            jugadores.get(0).mano.add(cartaMazo);
+            //Carta cartaMazo = mazo.remove(0);
+            jugadores.get(0).LevantarCarta(mazo);//mano.add(cartaMazo);
             ActualizarBaraja();
             ActualizarMano();
             ActivarBotones();
@@ -311,9 +309,9 @@ public class Base extends javax.swing.JFrame {
      * @param evt 
      */
     private void panelBarajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBarajaMouseClicked
-        if (jugadores.get(0).mano.size()<8) {
-            Carta cartaBaraja = baraja.cartas.remove(0);
-            jugadores.get(0).mano.add(cartaBaraja);
+        if (jugadores.get(0).CantidadEnMano() <8) {
+            //Carta cartaBaraja = baraja.cartas.remove(0);
+            jugadores.get(0).LevantarCarta(baraja);//mano.add(cartaBaraja);
             ActualizarBaraja();
             ActualizarMano();
             ActivarBotones();

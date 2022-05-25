@@ -19,9 +19,11 @@ public class Jugador {
     private String nombre="";
     private int ID = 0;
     private boolean esMano = false;
-    public ArrayList<Carta> mano = new ArrayList<>();
+    private Mano mano = new Mano();
+    
+    /*public ArrayList<Carta> mano = new ArrayList<>();
     private ArrayList<JuegoDeCartas> juegos = new ArrayList<JuegoDeCartas>();
-
+    */
     private Azar utilesAzar = new Azar();
     
     /**
@@ -51,8 +53,12 @@ public class Jugador {
     public void setID(int ID) {
         this.ID = ID;
     }
+
+    public ArrayList<Carta> getMano() {
+        return mano.getCartas();
+    }
     
-    
+        
     public void Barajar(Baraja baraja){
        
         for (int i = 0; i < 50; i++) {
@@ -68,22 +74,26 @@ public class Jugador {
     public void Repartir(ArrayList<Jugador> jugadores, Baraja baraja){
         for (int c = 0; c < 7; c++) {
             for(Jugador jugador:jugadores){
-                Carta carta = baraja.cartas.get(0);
-                baraja.cartas.remove(0);
-                jugador.mano.add(carta);
+                Carta carta = baraja.cartas.remove(0);
+                //baraja.cartas.remove(0);
+                jugador.mano.AgregarCartaAMano(carta);
             }
         }
         
-        Carta carta = baraja.cartas.get(0);
-        baraja.cartas.remove(0);
-        jugadores.get(1).mano.add(carta);
+        //Carta carta = baraja.cartas.get(0);
+        //Carta para el jugador 'mano'
+        jugadores.get(1).mano.AgregarCartaAMano(baraja.cartas.remove(0));
         
-        System.out.println("j0:"+jugadores.get(0).mano.size());
-        System.out.println("j1:"+jugadores.get(1).mano.size());
+        System.out.println("j0:"+jugadores.get(0).CantidadEnMano());
+        System.out.println("j1:"+jugadores.get(1).CantidadEnMano());
     }
     
     private void AgregarCartaAMano(Carta carta){
-        this.mano.add(carta);
+        this.mano.AgregarCartaAMano(carta);
+    }
+    
+    public int CantidadEnMano(){
+        return this.mano.CantCartas();
     }
     
     public void LevantarCarta(Baraja baraja){
@@ -106,7 +116,7 @@ public class Jugador {
        //Se añade la carta a la posición 0 del mazo.
        mazo.add(0,carta);
        //Se remueve la carta de la mano del jugador.
-       mano.remove(carta);
+       this.mano.TirarCarta(carta);
    }
 
     /**
