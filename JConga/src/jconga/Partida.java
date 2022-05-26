@@ -13,5 +13,20 @@ import java.util.ArrayList;
 public class Partida {
     private ArrayList<Jugador> jugadores = new ArrayList<>();
     
+    private Jugador creador;
+    private String nombre;
+    private String id;
     
+    public Partida(Jugador j, String nombre){
+        //this.id = 
+        this.jugadores.add(j);
+        this.creador = j;
+        System.out.println(this.creador.getNombre()+" ha creado la partida ");
+    }
+    
+    public void AgregarJugador(Jugador j){
+        jugadores.add(j);
+        System.out.println("Se ha agregado a "+j.getNombre()+" a la partida '"+this.nombre+"'");
+        System.out.println("Ahora hay "+jugadores.size()+" en la partida '"+this.nombre+"'");
+    }
 }
