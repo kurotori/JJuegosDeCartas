@@ -15,6 +15,7 @@ import java.net.NetworkInterface;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,14 +28,34 @@ public class Cliente {
     private PrintWriter out;
     private BufferedReader in;
     
+    
+    public void ListarInterfacesDeRed(){
+        
+        try {
+            Enumeration interfaces = NetworkInterface.getNetworkInterfaces();
+            while(interfaces.hasMoreElements()){
+                NetworkInterface interfaz = (NetworkInterface) interfaces.nextElement();
+                Enumeration direccionesIP = interfaz.getInetAddresses();
+                System.out.println("Interfaz: "+ interfaz.getDisplayName());
+                while(direccionesIP.hasMoreElements()){
+                    InetAddress dir = (InetAddress) direccionesIP.nextElement();
+                    System.out.println("IP: " + dir.getHostAddress());
+                }
+            }
+        } catch (SocketException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
     public void DatosRed() throws SocketException{
         try {
             InetAddress iplocal = InetAddress.getLocalHost();
-            NetworkInterface datoRed = NetworkInterface.getByInetAddress(iplocal);
-            short mascara = datoRed.getInterfaceAddresses().get(0).getNetworkPrefixLength();
+            //NetworkInterface datoRed = NetworkInterface.getByInetAddress(iplocal);
+            //short mascara = datoRed.getInterfaceAddresses().get(0).getNetworkPrefixLength();
             String ip = iplocal.getHostAddress();
             
-            System.out.println("IP:"+ip+"/"+mascara);
+            System.out.println(ip);//"IP:"+ip+"/"+mascara);
         } catch (UnknownHostException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
