@@ -6,6 +6,7 @@ package jconga;
 
 import java.io.IOException;
 import jconga.red.Cliente;
+import jconga.red.Herramientas;
 
 /**
  *
@@ -14,10 +15,12 @@ import jconga.red.Cliente;
 public class PruebaCliente {
     public static void main(String[] args) throws IOException {
         System.out.println("Iniciando cliente");
+                //jconga.red.Herramientas h = new Herramientas();
+                
                 Cliente client = new Cliente();
                 //client.DatosRed();
-                client.ListarInterfacesDeRed();
-                //client.escanearRed();
+                //client.ListarInterfacesDeRed();
+                client.escanearRed();
                 //client.iniciarConexion("127.0.0.1", 6666);
                 //String response = client.sendMessage("hello server");
                 //System.out.println("Respuesta recibida:" + response);
