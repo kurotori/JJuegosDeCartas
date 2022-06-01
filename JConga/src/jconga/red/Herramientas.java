@@ -23,15 +23,11 @@ public class Herramientas {
     /**
      * Interfaz de red seleccionada para las operaciones
      */
-    public int interfazElegida;
+    private int interfazElegida;
+    private int ipElegida;
     
     
-    public Herramientas(){
-        ListarInterfacesDeRed();
-        if (interfacesRed.size() == 1) {
-            interfazElegida = 0;
-        }
-    }
+    
     
     /***
      * Permite completar el listado de interfaces de red disponibles en el sistema.
@@ -86,6 +82,6 @@ public class Herramientas {
         return interfacesRed.get(interfazElegida);
     }
     
-    
+    public 
     
 }
