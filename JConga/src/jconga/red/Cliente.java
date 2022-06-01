@@ -31,59 +31,9 @@ public class Cliente {
     private BufferedReader in;
     private Herramientas h = new Herramientas();
     
-    
-    public String ipRed() throws SocketException{
-        String ip = "";
-        //try {
-            InetAddress iplocal = h.obtenerInterfazElegida().getInetAddresses().nextElement();
-            //NetworkInterface datoRed = NetworkInterface.getByInetAddress(iplocal);
-            //short mascara = datoRed.getInterfaceAddresses().get(0).getNetworkPrefixLength();
-        ip = iplocal.getHostAddress();
-            
-            //System.out.println("IP:"+ip+"/"+mascara);
-       // } catch (UnknownHostException ex) {
-         //   Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-        //}
         
-        return ip;
-    }
-
-    
     public void escanearRed(){
-        System.out.println("Escaneando red...");
-        try {
-            String dirIp = ipRed();
-            String[] sCompIp = dirIp.split("[.]");
-            int compIp = Integer.parseInt(sCompIp[3]);//int[] compIp = {0,0,0,0};
-            
-            String ipServidor = sCompIp[0]+"."+sCompIp[1]+"."+sCompIp[2]+".";
-            
-            
-            for(int i = 1; i<255; i++){
-                if (i != compIp) {
-                    try {
-                        iniciarConexion(ipServidor+i, 6666);
-                    } catch (IOException e) {
-                        System.out.println("Servidor no encontrado en "+ipServidor+i);
-                    }
-                    
-                }
-            }
-            
-            /*
-            for (int i = 0; i<4; i++) {
-                System.out.println(ip[i]);
-                compIp[i] = Integer.parseInt(ip[i]);
-                
-            }
-            String comienzo = 
-            */
-            
-        } catch (SocketException e) {
-        }
-        
-        
-        //int[4] componentesIp =  
+      
     }
     
     
