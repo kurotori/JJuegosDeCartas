@@ -70,6 +70,34 @@ public class InterfazRed {
         this.ipElegida = ip_ID;
     }
     
+    /**
+     * Devuelve la IP elegida en la interfaz.
+     * @return La IP seleccionada previamente. Si no se especifica con 
+     * <b>elegirIP</b> se toma el valor por descarte que es 0.
+     */
+    public Inet4Address getIpElegida(){
+        return direccionesIP.get(ipElegida);
+    }
     
+    
+    /**
+     * Establece y devuelve la IP elegida en la interfaz.
+     * @param ip_ID La ID de la IP que se quiere seleccionar.
+     * @return la IP seleccionada.
+     */
+    public Inet4Address getIpElegida(int ip_ID){
+        this.ipElegida = ip_ID;
+        
+        return direccionesIP.get(ipElegida);
+    }
+    
+    /**
+     * Devuelve el estado de <i>usable</i> de la interfaz
+     * @return <b>true</b> si la interfaz es usable, de lo contrario 
+     * <b>false</b>.
+     */
+    public boolean getEsUsable(){
+        return esUsable;
+    }
     
 }

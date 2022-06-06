@@ -19,12 +19,11 @@ import java.util.logging.Logger;
  */
 public class Herramientas {
     
-    private ArrayList<NetworkInterface> interfacesRed = new ArrayList<>();
+    private ArrayList<InterfazRed> interfacesRed = new ArrayList<>();
     /**
      * Interfaz de red seleccionada para las operaciones
      */
-    private int interfazElegida;
-    private int ipElegida;
+    private int interfazElegida = 0;
     
     
     
@@ -40,37 +39,21 @@ public class Herramientas {
             
             while(interfaces.hasMoreElements()){
                 NetworkInterface interfaz = (NetworkInterface) interfaces.nextElement();
+                InterfazRed intRed = new InterfazRed(interfaz);
                 
-                if (!interfaz.isLoopback() && interfaz.isUp()) {
-                    interfacesRed.add(interfaz);
-
-
-//Enumeration direccionesIP = interfaz.getInetAddresses();
-                    //System.out.println("Interfaz: "+ interfaz.getDisplayName());
-                    
-                    //while(direccionesIP.hasMoreElements()){
-                      //  InetAddress dir = (InetAddress) direccionesIP.nextElement();
-                        
-                        //if(dir instanceof Inet4Address){
-                          //  System.out.println("\tIP: " + dir.getHostAddress());
-                        //}
-                        
-                    //}
+                if (intRed.getEsUsable()) {
+                    interfacesRed.add(intRed);
                 }
-                
-                
             }
             
             if (!interfacesRed.isEmpty()) {
                 System.out.println("Se encontraron "+interfacesRed.size()+" interfaces de red:");
-                for (NetworkInterface intfaz : interfacesRed) {
-                    System.out.println( interfacesRed.indexOf(intfaz)+ " - "+intfaz.getDisplayName());
+                for (InterfazRed intfaz : interfacesRed) {
+                    System.out.println( interfacesRed.indexOf(intfaz)+ " - "+intfaz.getInterfaz().getDisplayName());
                 }
             } else {
                 System.out.println("No hay interfaces de red activas");
             }
-            
-            
         } 
         catch (SocketException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
@@ -79,7 +62,7 @@ public class Herramientas {
     
     
     public NetworkInterface obtenerInterfazElegida(){
-        return interfacesRed.get(interfazElegida);
+        return interfacesRed.get(interfazElegida).getInterfaz();
     }
     
     //public 
