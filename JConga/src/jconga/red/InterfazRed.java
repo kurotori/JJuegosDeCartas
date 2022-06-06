@@ -67,7 +67,7 @@ public class InterfazRed {
     }
 
     public void elegirIp(int ip_ID) {
-        this.ipElegida = ipElegida;
+        this.ipElegida = ip_ID;
     }
     
     
